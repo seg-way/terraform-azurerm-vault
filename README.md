@@ -1,0 +1,1 @@
+# teraform-self-managed-logscale-azure-vault
