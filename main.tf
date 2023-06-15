@@ -7,8 +7,8 @@ resource "azurerm_key_vault" "des_vault" {
   resource_group_name         = var.resource_group
   sku_name                    = var.sku_name
   tenant_id                   = data.azurerm_client_config.current.tenant_id
-  enabled_for_disk_encryption = false
-  enable_rbac_authorization   = true
+  enabled_for_disk_encryption = true
+  enable_rbac_authorization   = false
 
   purge_protection_enabled   = true
   soft_delete_retention_days = 7
