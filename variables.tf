@@ -15,11 +15,17 @@ variable "tags" {
   description = "(optional) describe your variable"
 }
 variable "admin_group_id" {
-  type = string
+  type        = string
   description = "(optional) describe your variable"
 }
 variable "sku_name" {
-  type = string
-  default = "standard"
+  type        = string
+  default     = "standard"
+  description = "(optional) describe your variable"
+}
+
+variable "virtual_network_subnet_ids" {
+  type        = list(string)
+  default     = []
   description = "(optional) describe your variable"
 }
