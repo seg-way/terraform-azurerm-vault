@@ -20,7 +20,7 @@ resource "azurerm_key_vault" "des_vault" {
   sku_name                    = var.sku_name
   tenant_id                   = data.azurerm_client_config.current.tenant_id
   enabled_for_disk_encryption = true
-  enable_rbac_authorization   = false
+  enable_rbac_authorization   = true
 
   purge_protection_enabled   = true
   soft_delete_retention_days = 7
@@ -36,18 +36,18 @@ resource "azurerm_key_vault" "des_vault" {
 }
 
 
-resource "azurerm_key_vault_access_policy" "admins" {
-  key_vault_id = azurerm_key_vault.des_vault.id
-  object_id    = var.admin_group_id
-  tenant_id    = data.azurerm_client_config.current.tenant_id
-  key_permissions = [
-    "Get",
-    "GetRotationPolicy",
-    "Create",
-    "Delete",
-    "Recover",
-    "Release",
-    "SetRotationPolicy",
-    "List"
-  ]
-}
+# resource "azurerm_key_vault_access_policy" "admins" {
+#   key_vault_id = azurerm_key_vault.des_vault.id
+#   object_id    = var.admin_group_id
+#   tenant_id    = data.azurerm_client_config.current.tenant_id
+#   key_permissions = [
+#     "Get",
+#     "GetRotationPolicy",
+#     "Create",
+#     "Delete",
+#     "Recover",
+#     "Release",
+#     "SetRotationPolicy",
+#     "List"
+#   ]
+# }
