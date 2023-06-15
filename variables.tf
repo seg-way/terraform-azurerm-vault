@@ -31,5 +31,6 @@ variable "virtual_network_subnet_ids" {
 }
 variable "key_vault_firewall_bypass_ip_cidr" {
   type = string
+  default = null
   description = "(optional) describe your variable"
 }
