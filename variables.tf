@@ -29,3 +29,7 @@ variable "virtual_network_subnet_ids" {
   default     = []
   description = "(optional) describe your variable"
 }
+variable "admin_group_id" {
+  type = string
+  description = "(optional) describe your variable"
+}
