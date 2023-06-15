@@ -1,3 +1,3 @@
-output "disk_encryption_set_id" {
-  value = azurerm_disk_encryption_set.des.id
+output "id" {
+  value = azurerm_key_vault.des_vault.id
 }
