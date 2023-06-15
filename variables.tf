@@ -18,3 +18,8 @@ variable "admin_group_id" {
   type = string
   description = "(optional) describe your variable"
 }
+variable "sku_name" {
+  type = string
+  default = "standard"
+  description = "(optional) describe your variable"
+}
