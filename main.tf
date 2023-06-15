@@ -38,8 +38,7 @@ resource "azurerm_key_vault" "des_vault" {
 resource "azurerm_role_assignment" "role_assignment" {
   scope                            = azurerm_key_vault.des_vault.id
   role_definition_name             = "Key Vault Crypto Officer"
-  principal_id                     = each.key
-  skip_service_principal_aad_check = var.skip_service_principal_aad_check
+  principal_id                     = var.admin_group_id
 }
 
 # resource "azurerm_key_vault_access_policy" "admins" {
