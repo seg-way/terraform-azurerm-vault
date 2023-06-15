@@ -22,8 +22,8 @@ resource "azurerm_key_vault" "des_vault" {
   enabled_for_disk_encryption = true
   enable_rbac_authorization   = true
 
-  purge_protection_enabled   = true
-  soft_delete_retention_days = 7
+  purge_protection_enabled   = var.purge_protection_enabled
+  soft_delete_retention_days = var.soft_delete_retention_days
 
   network_acls {
     bypass                     = "AzureServices"
@@ -36,9 +36,9 @@ resource "azurerm_key_vault" "des_vault" {
 }
 
 resource "azurerm_role_assignment" "role_assignment" {
-  scope                            = azurerm_key_vault.des_vault.id
-  role_definition_name             = "Key Vault Crypto Officer"
-  principal_id                     = var.admin_group_id
+  scope                = azurerm_key_vault.des_vault.id
+  role_definition_name = "Key Vault Crypto Officer"
+  principal_id         = var.admin_group_id
 }
 
 # resource "azurerm_key_vault_access_policy" "admins" {
