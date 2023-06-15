@@ -17,9 +17,9 @@ resource "azurerm_key_vault" "des_vault" {
 }
 
 
-resource "azurerm_key_vault_access_policy" "current_user" {
+resource "azurerm_key_vault_access_policy" "admins" {
   key_vault_id = azurerm_key_vault.des_vault.id
-  object_id    = data.azurerm_client_config.current.object_id
+  object_id    = var.admin_group_id
   tenant_id    = data.azurerm_client_config.current.tenant_id
   key_permissions = [
     "Get",

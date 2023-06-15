@@ -14,7 +14,7 @@ variable "tags" {
   type        = map(string)
   description = "(optional) describe your variable"
 }
-variable "key_vault_firewall_bypass_ip_cidr" {
-  default     = null
+variable "admin_group_id" {
+  type = string
   description = "(optional) describe your variable"
 }
