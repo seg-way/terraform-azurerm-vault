@@ -26,12 +26,12 @@ resource "azurerm_key_vault" "des_vault" {
   soft_delete_retention_days = 7
 
   network_acls {
-    bypass         = "AzureServices"
-    default_action = "Deny"
+    bypass                     = "AzureServices"
+    default_action             = "Deny"
     virtual_network_subnet_ids = var.virtual_network_subnet_ids
-    ip_rules       = [local.public_ip]
+    ip_rules                   = [local.public_ip]
   }
-  
+
   tags = var.tags
 }
 
@@ -42,8 +42,12 @@ resource "azurerm_key_vault_access_policy" "admins" {
   tenant_id    = data.azurerm_client_config.current.tenant_id
   key_permissions = [
     "Get",
+    "GetRotationPolicy",
     "Create",
-    "Delete", "Recover", "Release",
+    "Delete",
+    "Recover",
+    "Release",
+    "SetRotationPolicy",
     "List"
   ]
 }
