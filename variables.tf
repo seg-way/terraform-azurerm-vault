@@ -29,7 +29,7 @@ variable "virtual_network_subnet_ids" {
   default     = []
   description = "(optional) describe your variable"
 }
-variable "admin_group_id" {
+variable "key_vault_firewall_bypass_ip_cidr" {
   type = string
   description = "(optional) describe your variable"
 }
