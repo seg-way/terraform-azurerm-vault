@@ -21,10 +21,7 @@ resource "azurerm_key_vault" "des_vault" {
   tenant_id                   = data.azurerm_client_config.current.tenant_id
   enabled_for_disk_encryption = true
   enable_rbac_authorization   = true
-
-  purge_protection_enabled   = var.purge_protection_enabled
-  soft_delete_retention_days = var.soft_delete_retention_days
-
+  
   network_acls {
     bypass                     = "AzureServices"
     default_action             = "Deny"

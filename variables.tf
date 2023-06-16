@@ -35,14 +35,4 @@ variable "key_vault_firewall_bypass_ip_cidr" {
   description = "(optional) describe your variable"
 }
 
-variable "purge_protection_enabled" {
-  type = bool
-  default = false
-  description = "(optional) describe your variable"
-}
-variable "soft_delete_retention_days" {
-  type = number
-  default = 7
-  description = "(optional) describe your variable"
-}
 
