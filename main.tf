@@ -21,6 +21,7 @@ resource "azurerm_key_vault" "des_vault" {
   tenant_id                   = data.azurerm_client_config.current.tenant_id
   enabled_for_disk_encryption = true
   enable_rbac_authorization   = true
+  purge_protection_enabled    = true
 
   network_acls {
     bypass                     = "AzureServices"
