@@ -21,7 +21,7 @@ resource "azurerm_key_vault" "des_vault" {
   tenant_id                   = data.azurerm_client_config.current.tenant_id
   enabled_for_disk_encryption = true
   enable_rbac_authorization   = true
-  
+
   network_acls {
     bypass                     = "AzureServices"
     default_action             = "Deny"
@@ -34,8 +34,25 @@ resource "azurerm_key_vault" "des_vault" {
 
 resource "azurerm_role_assignment" "role_assignment" {
   scope                = azurerm_key_vault.des_vault.id
-  role_definition_name = "Key Vault Crypto Officer"
+  role_definition_name = "Key Vault Administrator"
   principal_id         = var.admin_group_id
+}
+
+data "azurerm_subscription" "primary" {
+}
+resource "azurerm_role_definition" "privelinkadmin" {
+  name        = "Key Vault Private Link Administrator"
+  scope       = azurerm_key_vault.des_vault.id
+  description = "Approve private links"
+
+  permissions {
+    actions = [
+      "PrivateEndpointConnectionsApproval/action"
+    ]
+  }
+  assignable_scopes = [
+    data.azurerm_subscription.primary.id
+  ]
 }
 
 # resource "azurerm_key_vault_access_policy" "admins" {
