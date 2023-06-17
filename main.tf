@@ -46,7 +46,7 @@ resource "azurerm_role_definition" "privelinkadmin" {
 
   permissions {
     actions = [
-      "PrivateEndpointConnectionsApproval/action"
+      "Microsoft.KeyVault/vaults/PrivateEndpointConnectionsApproval/action"
     ]
   }
 
