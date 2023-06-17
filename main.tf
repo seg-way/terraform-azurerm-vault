@@ -38,8 +38,7 @@ resource "azurerm_role_assignment" "role_assignment" {
   principal_id         = var.admin_group_id
 }
 
-data "azurerm_subscription" "primary" {
-}
+
 resource "azurerm_role_definition" "privelinkadmin" {
   name        = "Key Vault Private Link Administrator"
   scope       = azurerm_key_vault.des_vault.id
@@ -50,9 +49,7 @@ resource "azurerm_role_definition" "privelinkadmin" {
       "PrivateEndpointConnectionsApproval/action"
     ]
   }
-  assignable_scopes = [
-    data.azurerm_subscription.primary.id
-  ]
+
 }
 
 # resource "azurerm_key_vault_access_policy" "admins" {
