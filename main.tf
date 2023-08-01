@@ -39,32 +39,3 @@ resource "azurerm_role_assignment" "role_assignment" {
   principal_id         = var.admin_group_id
 }
 
-
-resource "azurerm_role_definition" "privelinkadmin" {
-  name        = "Key Vault Private Link Administrator"
-  scope       = azurerm_key_vault.des_vault.id
-  description = "Approve private links"
-
-  permissions {
-    actions = [
-      "Microsoft.KeyVault/vaults/PrivateEndpointConnectionsApproval/action"
-    ]
-  }
-
-}
-
-# resource "azurerm_key_vault_access_policy" "admins" {
-#   key_vault_id = azurerm_key_vault.des_vault.id
-#   object_id    = var.admin_group_id
-#   tenant_id    = data.azurerm_client_config.current.tenant_id
-#   key_permissions = [
-#     "Get",
-#     "GetRotationPolicy",
-#     "Create",
-#     "Delete",
-#     "Recover",
-#     "Release",
-#     "SetRotationPolicy",
-#     "List"
-#   ]
-# }
